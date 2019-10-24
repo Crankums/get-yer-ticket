@@ -1,0 +1,13 @@
+<%= @tickets.each.do |ticket| %>
+<ul>
+    <%= if ticket.status != "Complete" %>
+        <li>
+        <%= ticket.id %>
+        <%= ticket.customer.name %>
+        <%= ticket.bike.model %>
+        <%= ticket.bike.color %>
+        <%= link_to "View ticket", ticket_path(ticket) %>
+        </li>
+    <% end %>
+</ul>
+<% end %>

@@ -1,0 +1,20 @@
+<%= form_with model: ticket, local: true %>
+<%= f.label :check_in %>
+<%= f.datetime_local_field :check_in %>
+<%= f.label :work_start %>
+<%= f.datetime_local_field :work_start %>
+<%= f.label :due %>
+<%= f.datetime_local_field :due %>
+<%= f.label :status %>
+<%= f.select(:status, [['Open', 1], ['In Progress', 2], ['Complete', 3]]) %>
+<%= f.label :labor %>
+<%= f.text_field :labor %>
+<%= f.label :labor_cost %>
+<%= f.number_field :labor_cost %>
+<%= f.label :parts %>
+<%= f.text_field :parts %>
+<%= f.label :parts_cost %>
+<%= f.number_field :parts_cost %>
+<%= f.label :paid? %>
+<%= f.check_box :paid? %>
+<% end %>
