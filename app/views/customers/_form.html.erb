@@ -1,0 +1,9 @@
+<%= form_with model: customer, local: true %>
+<%= f.label :name %>
+<%= f.text_field :name %>
+<%= f.label :email %>
+<%= f.email_field :email %>
+<%= f.label :phone_number %>
+<%= f.text_field :phone_number %>
+<%= f.submit%>
+<% end %>

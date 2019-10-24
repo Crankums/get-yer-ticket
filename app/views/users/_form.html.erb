@@ -7,5 +7,10 @@
 <%= f.password_field :password %>
 <%= f.label :password_confirmation %>
 <%= f.password_field :password_confirmation %>
+<% if user.admin %>
+    <%= f.check_box :admin %>
+<% end %>
+<%= f.submit %>
+
 <% end %>
 <%# only admin will be able to add admin status %>
