@@ -12,5 +12,8 @@ class Ticket < ApplicationRecord
         ticket.status = "Complete"
     end
 
+    # special order functionality? shared with `class Ticket`
+        # if `special_order?` checked, approval request is sent to Admin for approval
+        #  if approved? s/o status is set to "Approved" => "Ordered" => "Arrived" => "Installed"
     
 end

@@ -1,3 +1,14 @@
 <%= @tickets.each.do |ticket|%>
-
+    <ul>
+    <% if !ticket.due.past? %>
+        <% if ticket.due.day == DateTime.now.day %> <%# <- this needs to account for month and year, they will get you for that%>
+         <li><%= link_to "Ticket No #{ticket.id}", ticket_path(ticket) %>
+            <%= ticket.customer.name%>
+            <%= ticket.bike.model %>
+            <%= ticket.bike.color %>
+            <%= ticket.labor%>
+         </li>
+        <% end %>
+    <% end %>
+    </ul>
 <% end %>

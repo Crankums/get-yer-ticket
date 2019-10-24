@@ -1,0 +1,18 @@
+<h2> <%= @customer.name %> </h2>
+<%= @customer.phone_number %>
+<%= @customer.email %>
+
+<ul>
+<%= @customer.bikes.each do |bike| %>
+    <li>
+    <%= bike.make %>
+    <%= bike.model %>
+    <%= bike.size %>
+    <%= bike.color %>
+    </li>
+    <% end %>
+</ul>
+<ul>
+<li><%= link_to "Last ticket", ticket_path(@customer.ticket.last) %> </li>
+</ul>
+<%= link_to "Edit Customer", edit_customer_path(@customer) %>
