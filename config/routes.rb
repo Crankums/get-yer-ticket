@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :calendars
   resources :admins
   resources :customers
   resources :users

@@ -1,0 +1,2 @@
+class CustomerTicket < ApplicationRecord
+end
