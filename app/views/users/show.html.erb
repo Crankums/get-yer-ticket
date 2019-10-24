@@ -1,0 +1,19 @@
+<h2> <%= @user.name %> </h2>
+<%= @user.email %>
+<%= if @user.admin %>
+    <h3>ADMIN</h3>
+<% end %>
+<%= @user.tickets.each do |ticket| %>
+<p>Current Tickets</p>
+<ul>
+    <%= if ticket.status == "Open" || ticket.status == "In Progress" %>
+    <li>
+        <label>Customer name:</label>
+        <%= ticket.customer.name %>
+        <%# ticket.bike.model %>
+        <%# ticket.bike.color %>
+        <%= link_to "See ticket" ticket_path(ticket) %>
+    </li>
+    <% end %>
+</ul>
+<%= link_to "All tickets" tickets_path %>
