@@ -8,7 +8,7 @@ class TicketsController < ApplicationController
     end
 
     def new
-        @ticket = Ticket.new
+        @ticket = Ticket.new(check_in: DateTime.now, due: DateTime.now+1.day)
     end
 
     def create
@@ -51,7 +51,7 @@ class TicketsController < ApplicationController
             :parts,
             :parts_cost,
             :total_cost,
-            :paid?
+            :paid?,
             :user_id,
             :customer_id,
         )

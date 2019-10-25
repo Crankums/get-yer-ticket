@@ -1,4 +1,4 @@
-<%= form_with model: ticket, local: true %>
+<%= form_with(model: ticket, local: true) do |f| %>
 <%= f.label :check_in %>
 <%= f.datetime_local_field :check_in %>
 <%= f.label :work_start %>
@@ -6,7 +6,7 @@
 <%= f.label :due %>
 <%= f.datetime_local_field :due %>
 <%= f.label :status %>
-<%= f.select(:status, [['Open', 1], ['In Progress', 2], ["Paused/Awaiting Approval", 3] ['Complete', 4]]) %>
+<%= f.select(:status, [['Open'], ['InProgress'], ['Paused/AwaitingApproval'], ['Complete']]) %>
 <%= f.label :labor %>
 <%= f.text_field :labor %>
 <%= f.label :labor_cost %>

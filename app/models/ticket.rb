@@ -2,18 +2,25 @@ class Ticket < ApplicationRecord
     belongs_to :customer
     belongs_to :user
     has_one :bike
+
+    validates_format_of :parts, :labor, :with => /\A[a-z0-9]+\z/
+    validates_presence_of :due
+    validates :status, inclusion: { in: %w(Open InProgress Paused/AwaitingApproval Complete)}
+    
     # build a limit that limits the number per day
+    def checked_in(ticket)
+        ticket.check_in= DateTime.now
+    end
+    
     def started(ticket)
-        ticket.work_start = DateTime.now
-        ticket.status= "In Progress"
+        if !ticket.work_start 
+            ticket.work_start= DateTime.now
+        end
+        ticket.status= "InProgress"
     end
 
     def paused(ticket)
-        ticket.status= "Paused/Awaiting Approval"
-    end
-
-    def unpaused(ticket)
-        ticket.status= "In Progress"
+        ticket.status= "Paused/AwaitingApproval"
     end
 
     def complete_ticket(ticket)

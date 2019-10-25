@@ -3,8 +3,9 @@ class User < ApplicationRecord
     has_many :customers, through: :tickets
     has_secure_password
 
-    validate :name, presence: true
-    validate :password, presence: true, length: {in: 6..10 }
-    validate :email, presence: true
-    # add :role["Mechanic", "Shop Manager", "Sales"]
+    validate :name, format: { with: /\A[A-Za-z]+\z/, message: "Name can only contain letters"}
+    validate :password, length: {minimum: 6 }
+    validate :password_confirmation, {minimum: 6 }
+    validate :email, format: { with: /@/, message: "A valid email is required" }
+    # validate :role, inclusion: {in: %w(Mechanic Manager Sales)}
 end
