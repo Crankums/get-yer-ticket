@@ -7,6 +7,7 @@ gem 'pry'
 
 gem 'simple_calendar', '~> 2.0'
 
+gem 'omniauth-github'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 6.0.0'

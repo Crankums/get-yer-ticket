@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
   get '/calendars/week', to: "calendars#week"
   get '/calendars/month', to: "calendars#month" 
+  get '/auth/:provider/callback', to: 'sessions#githubAuth'
+  get '/login', to: 'sessions#create'
+  post '/login', to: 'session#create'
+  get '/logout', to: 'session#delete'
   resources :admins
   resources :customers
   resources :users
