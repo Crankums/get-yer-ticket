@@ -1,0 +1,5 @@
+<h2>Quote for <%= @customer.name %> </h2>
+<%= @customer.phone %>
+<%= @customer.email %>
+  <%= render "bike", locals: {bike: @bike} %>
+    <%= render "work_order", locals: {ticket: @ticket} %>
