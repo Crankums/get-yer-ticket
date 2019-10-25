@@ -41,7 +41,7 @@ class CustomersController < ApplicationController
         params.require(:customer).permit(
             :name,
             :email,
-            :phone_number
+            :phone_number,
             :bikes,
             :tickets
         )
