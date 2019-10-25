@@ -1,1 +1,11 @@
 <h3>Quote for Ticket No <%= ticket.id %> </h3>
+<%= if ticket.bike.here? %>
+    <%= ticket.check_in %>
+    <%= ticket.work_start if ticket.work_start %>
+<% end %>
+<%= ticket.due %>
+<%= ticket.status%>
+<%= ticket.labor %> : <%= ticket.labor_cost %>
+<%= ticket.parts %> : <%= ticket.parts_cost %>
+
+<%= ticket.total_cost %>

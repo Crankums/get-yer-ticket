@@ -3,12 +3,20 @@ class Ticket < ApplicationRecord
     belongs_to :user
     has_one :bike
     # build a limit that limits the number per day
-    def started?(ticket)
+    def started(ticket)
         ticket.work_start = DateTime.now
-        ticket.status = "In Progress"
+        ticket.status= "In Progress"
     end
 
-    def complete?(ticket)
+    def paused(ticket)
+        ticket.status= "Paused/Awaiting Approval"
+    end
+
+    def unpaused(ticket)
+        ticket.status= "In Progress"
+    end
+
+    def complete_ticket(ticket)
         ticket.status = "Complete"
     end
 

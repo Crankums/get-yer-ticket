@@ -1,6 +1,8 @@
+<%# Work on this ticket has started! %>
 <h2>Ticket No <%= @ticket.id %></h2>
 <%= @ticket.check_in %>
-<%= @ticket.work_start %>
+<%= @ticket.work_start if @ticket.work_start %>
+<%= @ticket.status %>
 <%= @ticket.due %>
 <%= @ticket.labor %>
 <%= @ticket.labor_cost %>
@@ -11,4 +13,5 @@
 <%= @ticket.customer.phone_number %>
 <%= @ticket.bike.model_series %>
 <%= @ticket.bike.color %>
+<%# button_to "Start Ticket" %>
 <%= link_to "Edit Ticket", edit_ticket_path(@ticket) %>
