@@ -2,6 +2,7 @@ class Ticket < ApplicationRecord
     belongs_to :customer
     belongs_to :user
     has_one :bike
+    has_many :customer_tickets
 
     validates_format_of :parts, :labor, :with => /\A[a-z0-9]+\z/
     validates_presence_of :due
