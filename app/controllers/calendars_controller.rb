@@ -1,9 +1,9 @@
 class CalendarsController < ApplicationController
-    def week_calendar
+    def week
         @tickets = Ticket.all
     end
 
-    def month_calendar
+    def month
         @tickets = Ticket.all
     end
 

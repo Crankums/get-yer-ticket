@@ -1,3 +1,4 @@
 <%= month_calendar do |date| %>
     <%= date %>
+    <%= link_to "New Ticket", new_ticket_path if !date.past?%>
 <% end %>

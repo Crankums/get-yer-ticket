@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-  resources :calendars
+  get '/calendars/week', to: "calendars#week"
+  get '/calendars/month', to: "calendars#month" 
   resources :admins
   resources :customers
   resources :users
