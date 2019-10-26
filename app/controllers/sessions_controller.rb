@@ -4,6 +4,15 @@ class SessionsController < ApplicationController
     end
 
     def create
+        user = User.find_by_name(params[:name])
+        if user && user.authenticate(params[:password])
+            session[:user_id] = user.id
+            @user = user
+            redirect_to '/calendars/week'
+        else
+            flash[:error] = "Invalid name or password, please try again or click below to sign up"
+            render :new
+        end
     end
 
     def githubAuth
@@ -14,20 +23,23 @@ class SessionsController < ApplicationController
             else
                 user = User.create(:email => oauth_email)
                 session[:user_id] = user.id
-                redirect_to root_path
+                redirect_to '/calendars/week'
             end
         else
             user = User.find_by(:email => params[:email])
             if user && user.authenticate(params[:uid])
                 session[:user_id]= user.id
-                redirect_to root_path
+                redirect_to '/calendars/week'
             else
                 render 'sessions/new'
             end
         end
     end
 
-    def delete
+    def destroy
+        session.clear
+        flash[:notice] = "Successfully logged out"
+        redirect_to root_path
     end
 
     private 

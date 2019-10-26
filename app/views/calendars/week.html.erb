@@ -1,4 +1,4 @@
 <%= week_calendar do |date| %>
     <%= date %>
-    <%= link_to "New Ticket", new_ticket_path %>
+    <%= link_to "New Ticket", new_ticket_path(:date => date.to_s) if !date.past? %>
 <% end %>
