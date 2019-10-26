@@ -1,4 +1,5 @@
 <%= month_calendar do |date| %>
     <%= date %>
-    <%= link_to "New Ticket", new_ticket_path if !date.past?%>
+    <%= link_to "New Ticket", new_ticket_path(:date => date.to_s) if !date.past?%>
+    <%# form %>
 <% end %>

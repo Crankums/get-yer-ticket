@@ -1,10 +1,12 @@
 Rails.application.routes.draw do
+  root "welcome#home"
   get '/calendars/week', to: "calendars#week"
   get '/calendars/month', to: "calendars#month" 
-  get '/auth/:provider/callback', to: 'sessions#githubAuth'
-  get '/login', to: 'sessions#create'
-  post '/login', to: 'session#create'
-  get '/logout', to: 'session#delete'
+  get '/auth/github/callback', to: 'sessions#githubAuth'
+  
+  get '/login' => 'sessions#new'
+  post '/login' => 'sessions#create'
+  get '/logout' => 'sessions#destroy'
   resources :admins
   resources :customers
   resources :users

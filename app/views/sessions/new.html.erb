@@ -1,0 +1,10 @@
+<h2>Login</h2>
+<%= form_with(model: @user) do |f| %>
+<%= f.label :name %>
+<%= f.text_field :name %>
+<%= f.label :password %>
+<%= f.password_field :password %>
+<% end %>
+
+<%= link_to('Log in with Github', '/auth/github')%>
+<%= link_to('Log in with Google', '/auth/google')%>

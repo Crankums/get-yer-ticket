@@ -8,6 +8,7 @@ class TicketsController < ApplicationController
     end
 
     def new
+         binding.pry
         @ticket = Ticket.new(check_in: DateTime.now, due: DateTime.now+1.day)
     end
 

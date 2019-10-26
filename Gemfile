@@ -7,7 +7,9 @@ gem 'pry'
 
 gem 'simple_calendar', '~> 2.0'
 
+gem 'omniauth'
 gem 'omniauth-github'
+gem 'dotenv-rails', groups: [:development, :test]
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 6.0.0'
