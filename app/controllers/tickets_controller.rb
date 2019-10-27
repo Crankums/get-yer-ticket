@@ -1,4 +1,6 @@
 class TicketsController < ApplicationController
+    before_action :authenticate
+
     def index
         @tickets = Ticket.all
     end
@@ -16,11 +18,15 @@ class TicketsController < ApplicationController
     end
 
     def create
-        @ticket = Ticket.build(ticket_params)
+        binding.pry
+
+        @user = current_user
+        @ticket = @user.tickets.build(ticket_params)
         if @ticket.save
             redirect_to ticket_path(@ticket)
         else
-            render :new
+            flash[:error] = @ticket.errors.full_messages
+            redirect_to new_ticket_path(@ticket)
         end
     end
 

@@ -14,4 +14,16 @@
 <%= @ticket.bike.model_series %>
 <%= @ticket.bike.color %>
 <%# button_to "Start Ticket" %>
+<% if @ticket.status == 'InProgress' %>
+    <%= button_to "Pause Work", @ticket.paused %>
+    <% elsif @ticket.status == 'Open' %>
+    <%= button_to "Start Work", @ticket.started %>
+<% end %>
+<%= button_to "Complete Ticket", @ticket.complete_ticket %>
+
+  
+<% end %>
+<%= button_to @ticket %>
+    <% @ticket.started %>
+    <% end %>
 <%= link_to "Edit Ticket", edit_ticket_path(@ticket) %>

@@ -2,17 +2,22 @@
 <%= @customer.phone_number %>
 <%= @customer.email %>
 
+<% @customer.bikes.each do |bike| %>
+
 <ul>
-<%= @customer.bikes.each do |bike| %>
     <li>
     <%= bike.make %>
     <%= bike.model %>
     <%= bike.size %>
     <%= bike.color %>
     </li>
-    <% end %>
 </ul>
+    <% end %>
+
 <ul>
-<li><%= link_to "Last ticket", ticket_path(@customer.ticket.last) %> </li>
+<li>
+<% if @customer.tickets %>
+  <%# <%= link_to "Last ticket", ticket_path(@customer.tickets.last) %> </li>
+<% end %>
 </ul>
 <%= link_to "Edit Customer", edit_customer_path(@customer) %>

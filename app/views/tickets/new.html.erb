@@ -1,4 +1,7 @@
 <h2> New Ticket </h2>
-<%# customer CRM form %>
-<%# select customer bike or create new one %>
+<%= label_tag :customer_name %>
+<%= text_field_tag :customer_name %>
+
+<%= label_tag "Phone Number" %>
+<%= text_field_tag :cust_number %>
 <%= render "form", ticket: @ticket %>

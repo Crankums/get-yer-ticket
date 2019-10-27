@@ -10,9 +10,12 @@
   </head>
 
   <body>
+  <% flash.each do |k, v| %>
+            <div><%= v %></div>
+        <% end %>
     <%= yield %>
       <% if session[:user_id] %>
-      <%= link_to "Log Out", logout_path %>
+      <%= button_to "Log Out", logout_path, method: :get %>
       <% end %>
   </body>
 </html>
