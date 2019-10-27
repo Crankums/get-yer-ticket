@@ -1,29 +1,37 @@
 <%# Work on this ticket has started! %>
 <h2>Ticket No <%= @ticket.id %></h2>
-<%= @ticket.check_in %>
-<%= @ticket.work_start if @ticket.work_start %>
-<%= @ticket.status %>
-<%= @ticket.due %>
-<%= @ticket.labor %>
-<%= @ticket.labor_cost %>
-<%= @ticket.parts %>
-<%= @ticket.parts.cost %>
-<%= @ticket.total_cost %>
-<%= @ticket.customer.name %>
-<%= @ticket.customer.phone_number %>
-<%= @ticket.bike.model_series %>
-<%= @ticket.bike.color %>
+<%= label_tag :check_in %>
+<%= @ticket.check_in %> <br>
+<% if @ticket.work_start %>
+<%= label_tag :work_start%>
+<%= @ticket.work_start%> 
+<% end %><br>
+<%= label_tag :status%>
+<%= @ticket.status %> <br>
+<%= label_tag :due %>
+<%= @ticket.due %> <br>
+<%= label_tag :labor %>
+<%= @ticket.labor %> <br>
+<%= label_tag :labor_cost %>
+<%= @ticket.labor_cost %> <br>
+<%= label_tag :parts %>
+<%= @ticket.parts %> <br>
+<%= label_tag :parts_cost %>
+<%= @ticket.parts_cost %> <br>
+<%= label_tag :total_cost %>
+<%= @ticket.total_cost %> <br>
+<%= label_tag :customer_name %>
+<%= @ticket.customer.name %> <br>
+<%= label_tag :phone_number %>
+<%= @ticket.customer.phone_number %> <br>
+<%# <%= @ticket.bike.model_series %>
+<%# <%= @ticket.bike.color %> 
 <%# button_to "Start Ticket" %>
-<% if @ticket.status == 'InProgress' %>
-    <%= button_to "Pause Work", @ticket.paused %>
-    <% elsif @ticket.status == 'Open' %>
-    <%= button_to "Start Work", @ticket.started %>
-<% end %>
-<%= button_to "Complete Ticket", @ticket.complete_ticket %>
+<%# <% if @ticket.status == 'InProgress' %>
+    <%# <%= button_to "Pause Work", @ticket.paused(@ticket) %>
+    <%# <% elsif @ticket.status == 'Open' %>
+    <%# <%= button_to "Start Work", @ticket.started(@ticket) %>
+<%# <% end %>
+<%# <%= button_to "Complete Ticket", @ticket.complete_ticket(@ticket) %>
 
-  
-<% end %>
-<%= button_to @ticket %>
-    <% @ticket.started %>
-    <% end %>
 <%= link_to "Edit Ticket", edit_ticket_path(@ticket) %>

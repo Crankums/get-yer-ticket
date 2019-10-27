@@ -1,6 +1,6 @@
-<%= @tickets.each.do |ticket| %>
+<%= @tickets.each do |ticket| %>
 <ul>
-    <%= if ticket.status != "Complete" %>
+    <% if ticket.status != "Complete" %>
         <li>
         <%= ticket.id %>
         <%= ticket.customer.name %>

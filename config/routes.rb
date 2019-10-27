@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   post '/login' => 'sessions#create'
   get '/logout' => 'sessions#destroy'
   scope :admins do
-    resources :users
+    resources :users, only: [:new, :edit, :destroy]
   end
   resources :customers, only: [:new, :show, :edit, :destroy]
   resources :tickets

@@ -3,10 +3,10 @@ class Ticket < ApplicationRecord
     belongs_to :user
     has_one :bike
 
-    validates_format_of :parts, :labor, :with => /\A[a-z0-9]+\z/
+    validates :parts, format: {:with => /\A[A-Za-z0-9]+\z/ }
+    validates :labor, format: {:with => /\A[A-Za-z0-9]+\z/ }
     validates_presence_of :due
     validates :status, inclusion: { in: %w(Open InProgress Paused/AwaitingApproval Complete)}
-    
     
     # build a limit that limits the number per day
     def checked_in(ticket)

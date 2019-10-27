@@ -9,6 +9,7 @@ class TicketsController < ApplicationController
         @ticket = Ticket.find(params[:id])
     end
 
+
     def new
         if params[:date]
             @ticket = Ticket.new(check_in: params[:date].to_datetime, due: params[:date].to_datetime+1.day)
@@ -18,10 +19,11 @@ class TicketsController < ApplicationController
     end
 
     def create
-        binding.pry
 
-        @user = current_user
+        @user = current_user   
         @ticket = @user.tickets.build(ticket_params)
+        @ticket.customer = Customer.find_by_name(params[:ticket][:customer_name])
+        
         if @ticket.save
             redirect_to ticket_path(@ticket)
         else
@@ -63,7 +65,6 @@ class TicketsController < ApplicationController
             :total_cost,
             :paid?,
             :user_id,
-            :customer_id,
-        )
+            :customer_id)
     end
 end

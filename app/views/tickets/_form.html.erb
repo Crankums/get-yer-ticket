@@ -1,4 +1,6 @@
 <%= form_with(model: ticket, local: true) do |f| %>
+<%= f.label :customer_name %>
+<%= f.text_field :customer_name %>
 <%= f.label :check_in %>
 <%= f.datetime_local_field :check_in %>
 <%= f.label :work_start %>
