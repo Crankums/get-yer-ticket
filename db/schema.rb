@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_24_015351) do
+ActiveRecord::Schema.define(version: 2019_10_27_213030) do
 
   create_table "admins", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
@@ -26,6 +26,7 @@ ActiveRecord::Schema.define(version: 2019_10_24_015351) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "customer_id"
+    t.integer "ticket_id"
   end
 
   create_table "calendars", force: :cascade do |t|
@@ -67,6 +68,7 @@ ActiveRecord::Schema.define(version: 2019_10_24_015351) do
     t.datetime "updated_at", precision: 6, null: false
     t.integer "user_id"
     t.integer "customer_id"
+    t.integer "bike_id"
   end
 
   create_table "users", force: :cascade do |t|
