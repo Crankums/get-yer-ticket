@@ -1,14 +1,19 @@
-<%= form_with(model: ticket, local: true) do |f| %>
-    <% if ticket.customer.bikes %>
-        <%= f.label :select_bike %>
-        <%= f.collection_select(:bike_id, ticket.customer.bikes, :bike_id, :model)%>
-    <% else %>
-        <%= f.text_field :make, placeholder: "Make" %>
-        <%= f.text_field :model_series, placeholder: "Model/Series" %>
-        <%= f.text_field :color, placeholder: "Color" %>
-        <%= f.text_field :size, placeholder: "Size" %>
-    <% end %>
-    <%= f.label :check_in %>
+<h3>CRM</h3>
+<%= form_with model: ticket, local: true, do |f| %>
+<%= label_tag "Customer Name: " %>
+<%= f.text_field :name %> <br>
+
+<%= label_tag "Phone Number: " %>
+<%= telephone_field_tag :phone_number %> <br>
+
+<%= label_tag "Email: " %>
+<%= email_field_tag :email %>
+
+    <%= f.text_field :make, placeholder: "Make" %>
+    <%= f.text_field :model_series, placeholder: "Model/Series" %>
+    <%= f.text_field :color, placeholder: "Color" %>
+    <%= f.text_field :size, placeholder: "Size" %>
+<%= f.label :check_in %>
     <%= f.datetime_local_field :check_in %>
     <%= f.label :work_start %>
     <%= f.datetime_local_field :work_start %>
@@ -28,3 +33,4 @@
     <%= f.check_box :paid? %>
     <%= f.submit%>
 <% end %>
+<%# <%= link_to "Create New Work Order", new_ticket_path %>

@@ -19,11 +19,9 @@ class TicketsController < ApplicationController
     end
 
     def create
-
         @user = current_user   
         @ticket = @user.tickets.build(ticket_params)
         @ticket.customer = Customer.find_by_name(params[:ticket][:customer_name])
-        
         if @ticket.save
             redirect_to ticket_path(@ticket)
         else
@@ -49,6 +47,18 @@ class TicketsController < ApplicationController
         @ticket = Ticket.find(params[:id])
         redirect_to tickets_path
     end
+
+    # def crm
+    #     @customer = Customer.find_or_create_by(name: params[:name])
+    #     @customer.phone_number= params[:phone_number]
+    #     @customer.email= params[:email]
+    #     @customer.bikes.build(make: params[:make], model_series: params[:model_series], color: params[:color], size: params[:size])
+    #     if @customer.save
+    #         redirect_to new_ticket_path
+    #     else
+    #         render :crm
+    #     end
+    # end
 
     private
 

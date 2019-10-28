@@ -15,3 +15,4 @@ User.create(name: "Boss", password: "tesTing123", password_confirmation: "tesTin
 Customer.create(name: "Fred", email: "fred@fred.com", phone_number: "555-5555")
 Customer.create(name: "George", email: "george@george.com", phone_number: "555-5555")
 
+bike = Bike.create([{ make: 'Specialized', model_series: 'Allez', color: "Red", size: "52"}, { make: "Cannondale", model_series: "Bad Boy", color: "Black", size: "17"}, { make: "Kona", model_series: "Honzo", color: "Green", size: "Med"}])
