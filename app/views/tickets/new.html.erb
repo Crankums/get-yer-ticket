@@ -1,8 +1,14 @@
 <h2> New Ticket </h2>
-<%= form_tag(customers_path, method: get) do %>
+<% if !@customer %>
+<%= form_tag(customers_path, method: :get) do %>
     <%= text_field_tag(:search, params[:search])%>
     <%= submit_tag "Search for Custie"%>
-<%# search for customer %>
+    <% end %>
+    <%= render "form_cust", ticket: @ticket %>
+    <% else %>
+    <%= @customer.name %>
+    <%= render "form", ticket: @ticket%>
+<% end %>
 <%# if @customer found %>
 <%# <%= render "form", ticket: @ticket %>
 <%# else %>

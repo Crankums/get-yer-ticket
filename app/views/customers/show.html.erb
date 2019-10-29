@@ -7,7 +7,7 @@
 <ul>
     <li>
     <%= bike.make %>
-    <%= bike.model %>
+    <%= bike.model_series %>
     <%= bike.size %>
     <%= bike.color %>
     </li>
@@ -17,7 +17,8 @@
 <ul>
 <li>
 <% if @customer.tickets %>
-  <%# <%= link_to "Last ticket", ticket_path(@customer.tickets.last) %> </li>
+  <%= link_to "Last ticket", ticket_path(@customer.tickets.last) %> </li>
 <% end %>
 </ul>
 <%= link_to "Edit Customer", edit_customer_path(@customer) %>
+<%= link_to "New Ticket", {:controller => "tickets", :action => "new", :customer_id => @customer.id} %>

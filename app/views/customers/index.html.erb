@@ -1,3 +1,1 @@
-<% @customers.each do |customer| %>
-<%= link_to "#{customer.name}", customer_path %>
-<% end %>
+<%= link_to "#{@customers.name}", customer_path(@customers)%>

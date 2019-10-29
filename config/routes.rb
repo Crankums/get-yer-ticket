@@ -4,8 +4,7 @@ Rails.application.routes.draw do
   get '/calendars/month', to: "calendars#month" 
   get '/auth/github/callback', to: 'sessions#githubAuth'
   
-  get '/crm' => 'tickets#crm'
-  post '/crm' => 'tickets#new'
+  
   get '/login' => 'sessions#new'
   post '/login' => 'sessions#create'
   get '/logout' => 'sessions#destroy'
@@ -13,7 +12,7 @@ Rails.application.routes.draw do
     resources :users, only: [:new, :edit, :destroy]
   end
 
-  resources :customers, only: [:new, :show, :edit, :destroy]
+  resources :customers, only: [:index, :new, :show, :edit, :destroy]
   
   resources :tickets
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
