@@ -1,6 +1,5 @@
 class Bike < ApplicationRecord
     belongs_to :customer
-    # has_many :bikes?
 end
 
 # admin notes for bikes "probably stolen"

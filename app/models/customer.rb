@@ -1,5 +1,6 @@
 class Customer < ApplicationRecord
     has_many :bikes
+    accepts_nested_attributes_for :bikes
     has_many :tickets
     has_many :users, through: :tickets
 

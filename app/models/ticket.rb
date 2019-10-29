@@ -2,6 +2,7 @@ class Ticket < ApplicationRecord
     belongs_to :customer
     belongs_to :user
     has_one :bike
+    accepts_nested_attributes_for :customer
 
     validates :parts, format: {:with => /\A[A-Za-z0-9]+\z/ }
     validates :labor, format: {:with => /\A[A-Za-z0-9]+\z/ }

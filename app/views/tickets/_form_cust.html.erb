@@ -1,18 +1,25 @@
-<h3>CRM</h3>
-<%= form_with model: ticket, local: true, do |f| %>
-<%= label_tag "Customer Name: " %>
-<%= f.text_field :name %> <br>
+<%= form_with model: ticket, local: true do |f| %>
+    
+    <%= f.fields_for :customers do |c| %>
+        <%= c.label :name %>
+        <%= c.text_field :name %>
+        
+        <%= c.label :phone_number %>
+        <%= c.telephone_field :phone_number %>
 
-<%= label_tag "Phone Number: " %>
-<%= telephone_field_tag :phone_number %> <br>
-
-<%= label_tag "Email: " %>
-<%= email_field_tag :email %>
-
-    <%= f.text_field :make, placeholder: "Make" %>
-    <%= f.text_field :model_series, placeholder: "Model/Series" %>
-    <%= f.text_field :color, placeholder: "Color" %>
-    <%= f.text_field :size, placeholder: "Size" %>
+        <%= c.label :email %>
+        <%= c.email_field :email %>
+    <% end %>
+    <br><br>
+    <%= f.fields_for :bikes do |b| %>
+        <%= b.text_field :make, placeholder: "Make" %>
+        <%= b.text_field :model_series, placeholder: "Model/Series" %>
+        <%= b.text_field :color, placeholder: "Color" %>
+        <%= b.text_field :size, placeholder: "Size" %>
+    <% end %>
+    
+    
+    
 <%= f.label :check_in %>
     <%= f.datetime_local_field :check_in %>
     <%= f.label :work_start %>
@@ -33,4 +40,3 @@
     <%= f.check_box :paid? %>
     <%= f.submit%>
 <% end %>
-<%# <%= link_to "Create New Work Order", new_ticket_path %>

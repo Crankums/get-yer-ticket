@@ -11,26 +11,23 @@ class TicketsController < ApplicationController
 
 
     def new
-        binding.pry
-        if @customer = Customer.find_by(params[:id])
-            if params[:date]
-                @ticket = Ticket.new(check_in: params[:date].to_datetime, 
-                                    due: params[:date].to_datetime+1.day, 
-                                    :customer => @customer)
-            else
-                @ticket = Ticket.new(check_in: DateTime.now, 
-                                    due: DateTime.now+1.day, 
-                                    :customer => @customer)
-            end
+        if params[:date]
+            @ticket = Ticket.new(check_in: params[:date].to_datetime, 
+                                due: params[:date].to_datetime+1.day, 
+                                :customer => @customer)
         else
-            @ticket = Ticket.new(check_in: DateTime.now, due: DateTime.now+1.day)
+            @ticket = Ticket.new(check_in: DateTime.now, 
+                                due: DateTime.now+1.day, 
+                                :customer => @customer)
         end
     end
 
     def create
         binding.pry
         @user = current_user   
-        @ticket = @user.tickets.build(ticket_params)
+        # if @customer = Customer.find_by(id: params[:customer_id])
+            @ticket = @user.tickets.build(ticket_params.except(:bikes, :customers))
+        # end
         if @ticket.save
             redirect_to ticket_path(@ticket)
         else
@@ -85,6 +82,9 @@ class TicketsController < ApplicationController
             :paid?,
             :user_id,
             :customer_id,
-            :search)
+            :search,
+            :bikes => [:make, :model_series, :color, :size],
+            :customers => [:name, :phone_number, :email]
+            )
     end
 end
