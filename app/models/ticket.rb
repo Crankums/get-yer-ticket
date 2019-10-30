@@ -5,11 +5,10 @@ class Ticket < ApplicationRecord
     accepts_nested_attributes_for :customer
     accepts_nested_attributes_for :bike
 
-    validates :parts, format: {:with => /\A[A-Za-z0-9]+\z/ }
-    validates :labor, format: {:with => /\A[A-Za-z0-9]+\z/ }
+    validates :parts, format: {:with => /\A[A-Za-z0-9 ]+\z/ }
+    validates :labor, format: {:with => /\A[A-Za-z0-9 ]+\z/ }
     validates_presence_of :due
-    validates :status, inclusion: { in: %w(Open InProgress Paused/AwaitingApproval Complete)}
-    
+          
     # build a limit that limits the number per day
     def checked_in(ticket)
         ticket.check_in= DateTime.now

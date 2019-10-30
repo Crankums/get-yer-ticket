@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   root "welcome#home"
-  get '/today', to: "calendars#day"
+  get '/today', to: "calendars#today"
   get '/calendars/week', to: "calendars#week"
   get '/calendars/month', to: "calendars#month" 
   get '/auth/github/callback', to: 'sessions#githubAuth'

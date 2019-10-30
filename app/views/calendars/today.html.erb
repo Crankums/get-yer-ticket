@@ -1,12 +1,12 @@
 <% @tickets.each do |ticket|%>
     <ul>
-        <% if ticket.due.to_date == DateTime.now.to_date || ticket.status == 'InProgress'%> <%# <- this needs to account for month and year, they will get you for that%>
+        <% if ticket.due.to_date == DateTime.now.to_date || ticket.status == 'In Progress'%> <%# <- this needs to account for month and year, they will get you for that%>
          <li><%= link_to "Ticket No #{ticket.id}", ticket_path(ticket) %>
-            <%= ticket.customer.name%>
-            <%= ticket.bike.model %>
-            <%= ticket.bike.color %>
-            <%= ticket.labor %>
-            <%= ticket.status %>
+            <%= ticket.customer.name%> <br>
+            <%= ticket.bike.model_series %> <br>
+            <%= ticket.bike.color %> <br>
+            <%= ticket.labor %> <br>
+            <%= ticket.status %> <br>
             <%= ticket.total_cost %>
          </li>
         <% end %>

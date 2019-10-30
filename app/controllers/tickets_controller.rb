@@ -11,6 +11,7 @@ class TicketsController < ApplicationController
     end
 
 
+
     def new
         binding.pry
         if params[:customer_id]
@@ -59,9 +60,11 @@ class TicketsController < ApplicationController
         @ticket = Ticket.find(params[:id])
         @customer = @ticket.customer
         if @ticket.update(ticket_params.except(:customers, :bikes))
+
             redirect_to ticket_path(@ticket)
         else
-            render :new
+            flash[:error] = @ticket.errors.full_messages
+            render :edit
         end
     end
  

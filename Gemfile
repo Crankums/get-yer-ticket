@@ -9,6 +9,8 @@ gem 'simple_calendar', '~> 2.0'
 
 gem 'omniauth'
 gem 'omniauth-github'
+gem 'omniauth-google-oauth2'
+gem 'omniauth-rails_csrf_protection', '~> 0.1'
 gem 'dotenv-rails', groups: [:development, :test]
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
