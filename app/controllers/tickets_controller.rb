@@ -46,13 +46,17 @@ class TicketsController < ApplicationController
         end
     end
 
-    def edit
+    def edit       
+        @user = current_user
         @ticket = Ticket.find(params[:id])
+        @customer = @ticket.customer    
     end
 
     def update
+        @user = current_user    
         @ticket = Ticket.find(params[:id])
-        if @ticket.update(ticket_params)
+        @customer = @ticket.customer
+        if @ticket.update(ticket_params.except(:customers, :bikes))
             redirect_to ticket_path(@ticket)
         else
             render :new
