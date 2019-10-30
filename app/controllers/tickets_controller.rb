@@ -23,11 +23,20 @@ class TicketsController < ApplicationController
     end
 
     def create
-        binding.pry
         @user = current_user   
-        # if @customer = Customer.find_by(id: params[:customer_id])
+        if @customer = Customer.find_by(id: params[:customer_id])
             @ticket = @user.tickets.build(ticket_params.except(:bikes, :customers))
-        # end
+            if ticket_params[:bike][:make].empty?
+            @ticket.bike = Bike.find_by(id: params[:bike_id])
+            else @ticket.bike = Bike.create(ticket_params[:bikes] )
+            end
+        else
+            @customer = Customer.new(ticket_params[:customers])
+            @ticket = @customer.tickets.build(ticket_params.except(:bikes, :customers))
+            @ticket.user = @user
+            @ticket.bike = Bike.new(ticket_params[:bikes])
+            @customer.bikes << @ticket.bike
+        end
         if @ticket.save
             redirect_to ticket_path(@ticket)
         else
@@ -50,8 +59,14 @@ class TicketsController < ApplicationController
     end
  
     def delete
-        @ticket = Ticket.find(params[:id])
-        redirect_to tickets_path
+        if current_user.admin
+            @ticket = Ticket.find(params[:id])
+            @ticket.destroy
+            redirect_to tickets_path
+        else
+            flash[:error] = "You must be an admin to delete work orders"
+            redirect_to ticket_path(@ticket)
+        end
     end
 
     # def crm
@@ -84,7 +99,6 @@ class TicketsController < ApplicationController
             :customer_id,
             :search,
             :bikes => [:make, :model_series, :color, :size],
-            :customers => [:name, :phone_number, :email]
-            )
+            :customers => [:name, :phone_number, :email])
     end
 end
