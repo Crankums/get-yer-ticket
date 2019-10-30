@@ -6,6 +6,7 @@ class TicketsController < ApplicationController
     end
 
     def show
+        @user = current_user
         @ticket = Ticket.find(params[:id])
     end
 

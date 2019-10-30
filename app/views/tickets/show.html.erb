@@ -1,10 +1,10 @@
 <%# Work on this ticket has started! %>
 <h2>Ticket No <%= @ticket.id %></h2> 
-<%# <%= render "partials/bike", bike: @ticket.customer.bikes%>
-<%= @ticket.bike.make %> <br>
- <%= @ticket.bike.model_series %> <br>
-  <%= @ticket.bike.color %> <br>
-   <%= @ticket.bike.size %> <br>
+    <%= @ticket.bike.make %> <br>
+    
+    <%= @ticket.bike.model_series %> <br>
+    <%= @ticket.bike.color %> <br>
+    <%= @ticket.bike.size %> <br>
 <%= label_tag :check_in %>
 <%= @ticket.check_in %> <br>
 <% if @ticket.work_start %>
@@ -29,8 +29,6 @@
 <%= @ticket.customer.name %> <br>
 <%= label_tag :phone_number %>
 <%= @ticket.customer.phone_number %> <br>
-<%# <%= @ticket.bike.model_series %>
-<%# <%= @ticket.bike.color %> 
 <%# button_to "Start Ticket" %>
 <%# <% if @ticket.status == 'InProgress' %>
     <%# <%= button_to "Pause Work", @ticket.paused(@ticket) %>
