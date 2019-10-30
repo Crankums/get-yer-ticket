@@ -7,6 +7,7 @@ class CalendarsController < ApplicationController
         @tickets = Ticket.all
     end
 
-    def day
+    def today
+        @tickets = Ticket.all
     end
 end

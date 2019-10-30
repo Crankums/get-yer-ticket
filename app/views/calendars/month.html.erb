@@ -5,7 +5,7 @@
     <% @tickets.each do |t|%>
         <% if t.valid? %>
             <% if t.due.to_date == date.to_date %>
-                <%= link_to "#{t.id}, #{t.customer.name}", ticket_path(t) %>          
+                <%= link_to "#{t.id}: #{t.customer.name}", ticket_path(t) %>          
             <% end %>
         <% end %>
     <% end %>
