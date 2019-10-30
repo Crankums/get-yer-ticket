@@ -1,4 +1,6 @@
 class CustomersController < ApplicationController
+    before_action :authenticate
+
     def index
         @customers = Customer.search(params[:search])
     end
@@ -34,8 +36,15 @@ class CustomersController < ApplicationController
     end
 
     def delete
-        @customer = Customer.find_by(params[:id])
-        @customer.destroy
+        @user = current_user
+        if @user.admin
+            @customer = Customer.find_by(params[:id])
+            @customer.destroy
+        flash[:message] = "Custie has been destroyed"
+        else
+            redirect_to customer_path(@customer)
+            flash[:error] = "You cannnot destroy this customer, you are not powerful enough"
+        end
     end
 
     private

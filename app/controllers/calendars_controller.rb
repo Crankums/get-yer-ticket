@@ -1,4 +1,6 @@
 class CalendarsController < ApplicationController
+    before_action :authenticate
+
     def week
         @tickets = Ticket.all
     end

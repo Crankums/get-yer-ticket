@@ -12,14 +12,16 @@ class TicketsController < ApplicationController
 
 
     def new
+        binding.pry
+        if params[:customer_id]
+            @customer = Customer.find_by(params[:id])
+        end
         if params[:date]
             @ticket = Ticket.new(check_in: params[:date].to_datetime, 
-                                due: params[:date].to_datetime+1.day, 
-                                :customer => @customer)
+                                due: params[:date].to_datetime+1.day)
         else
             @ticket = Ticket.new(check_in: DateTime.now, 
-                                due: DateTime.now+1.day, 
-                                :customer => @customer)
+                                due: DateTime.now+1.day)
         end
     end
 

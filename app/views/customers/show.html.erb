@@ -1,22 +1,23 @@
 <h2> <%= @customer.name %> </h2>
 <%= @customer.phone_number %>
 <%= @customer.email %>
-
-<% @customer.bikes.each do |bike| %>
-
+<% if !@customer.bikes.empty? %>
 <ul>
+"Bikes"
+<% @customer.bikes.each do |bike| %>
     <li>
     <%= bike.make %>
     <%= bike.model_series %>
     <%= bike.size %>
     <%= bike.color %>
     </li>
-</ul>
     <% end %>
+</ul>
+  <% end %>
 
 <ul>
 <li>
-<% if @customer.tickets %>
+<% if @customer.tickets.any? %>
   <%= link_to "Last ticket", ticket_path(@customer.tickets.last) %> </li>
 <% end %>
 </ul>
