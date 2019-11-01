@@ -1,19 +1,22 @@
-<h2> <%= @user.name %> </h2>
-<%= @user.email %>
-<%= if @user.admin %>
+<%= @user.name %> <br>
+<%= @user.email %> <br>
+<% if @user.admin %>
     <h3>ADMIN</h3>
 <% end %>
-<%= @user.tickets.each do |ticket| %>
 <p>Current Tickets</p>
-<ul>
-    <%= if ticket.status == "Open" || ticket.status == "In Progress" %>
+<% @user.tickets.each do |ticket| %>
+ <ul>
+    <% if ticket.status == "Open" || ticket.status == "In Progress" %>
     <li>
-        <label>Customer name:</label>
-        <%= ticket.customer.name %>
-        <%# ticket.bike.model_series %>
-        <%# ticket.bike.color %>
-        <%= link_to "See ticket" ticket_path(ticket) %>
+        <%= link_to "See ticket no #{ticket.id}", ticket_path(ticket) %>
     </li>
     <% end %>
 </ul>
-<%= link_to "All tickets" tickets_path %>
+<% end %>
+<br>
+<% if policy(current_user).destroy? %>
+    <%= button_to "Delete", action: :destroy %>
+<% end %>
+<br>
+<%= link_to "All tickets", tickets_path %>
+<br>

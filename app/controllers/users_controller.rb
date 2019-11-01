@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
     before_action :authenticate
+    before_action :current_user
 
     def show
         @user = User.find(params[:id])
@@ -11,6 +12,7 @@ class UsersController < ApplicationController
 
     def create
         @user = User.create(user_params)
+        authorize @user
         if @user.save
             log_in(@user)
             flash[:success] = "Welcome #{@user.name}"
@@ -44,6 +46,8 @@ class UsersController < ApplicationController
             flash[:error]= "There was a problem deleting this user"
             render :show
         end
+    end
+
 
     private
 
