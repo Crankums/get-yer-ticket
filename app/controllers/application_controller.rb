@@ -33,6 +33,10 @@ class ApplicationController < ActionController::Base
         resource.user == current_user
     end
 
+    def login(user)
+        session[:user_id] = user.id
+    end
+    
     def logged_in?
         !!current_user
     end

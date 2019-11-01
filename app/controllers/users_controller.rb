@@ -1,19 +1,22 @@
 class UsersController < ApplicationController
     before_action :authenticate
 
-    def new
-        @user = User.new
-    end
-
     def show
         @user = User.find(params[:id])
+    end
+
+    def new
+        @user = User.new
     end
 
     def create
         @user = User.build(user_params)
         if @user.save
+            log_in(@user)
+            flash[:success] = "Welcome #{@user.name}"
             redirect_to user_path(@user)
         else
+            flash[:danger] = "Sorry, your account could not be created"
             render :new
         end
     end
