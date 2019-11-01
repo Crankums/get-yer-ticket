@@ -11,8 +11,25 @@ class SessionsController < ApplicationController
             redirect_to '/calendars/week'
         else
             flash[:error] = "Invalid name or password, please try again or click below to sign up"
-            render :new
+            redirect_to login_path
         end
+    end
+
+    def googleAuth
+        access_token = request.env["omniauth.auth"]
+        user = User.from_google(access_token)
+        @user.google_token = access_token.credentials.token
+        refresh_token = access_token.credentials.refresh_token
+        @user.google_refresh_token = refresh_token if refresh_token.present?
+        if @user.save
+            log_in(@user)
+            flash[:success] = "Welcome #{@user.name}!"
+            redirect_to '/calendars/week'
+        else
+            flash[:danger] = "Login credentials invalid, please retry"
+            redirect_to login_path
+        end
+
     end
 
     def githubAuth

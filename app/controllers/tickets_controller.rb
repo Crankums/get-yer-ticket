@@ -94,6 +94,7 @@ class TicketsController < ApplicationController
     private
 
     def ticket_params
+        binding.pry
         params.require(:ticket).permit(
             :check_in,
             :work_start,

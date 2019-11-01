@@ -9,7 +9,7 @@ class Ticket < ApplicationRecord
     validates :labor, format: {:with => /\A[A-Za-z0-9 ]+\z/ }
     validates_presence_of :due
           
-    # build a limit that limits the number per day
+    # build a limit that limits the number per day <- scope method
     def checked_in(ticket)
         ticket.check_in= DateTime.now
     end
@@ -19,7 +19,7 @@ class Ticket < ApplicationRecord
     end
 
     def paused(ticket)
-        ticket.status= "Paused/AwaitingApproval"
+        ticket.status= "Paused/Awaiting Approval"
     end
 
     def complete_ticket(ticket)

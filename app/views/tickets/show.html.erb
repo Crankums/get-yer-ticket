@@ -8,8 +8,8 @@
 <%= label_tag :check_in %>:
 <%= @ticket.check_in.localtime.strftime("%m/%d/%Y %I:%M%p") %> <br>
 <% if @ticket.work_start %>
-<%= label_tag :work_start%>:
-<%= @ticket.work_start.localtime.strftime("%m/%d/%Y %I:%M%p") %> 
+    <%= label_tag :work_start%>:
+    <%= @ticket.work_start.localtime.strftime("%m/%d/%Y %I:%M%p") %> 
 <% end %><br>
 <%= label_tag :status%>: 
 <%= @ticket.status %> <br>
@@ -31,13 +31,6 @@
 <%= @ticket.customer.phone_number %> <br>
 <% if @user.admin %>
     <%= button_to "Delete Ticket", method: 'delete'%>
-    <% end %>
-<%# button_to "Start Ticket" %>
-<%# <% if @ticket.status == 'InProgress' %>
-    <%# <%= button_to "Pause Work", @ticket.paused(@ticket) %>
-    <%# <% elsif @ticket.status == 'Open' %>
-    <%# <%= button_to "Start Work", @ticket.started(@ticket) %>
-<%# <% end %>
-<%# <%= button_to "Complete Ticket", @ticket.complete_ticket(@ticket) %>
+<% end %>
 
 <%= link_to "Edit Ticket", edit_ticket_path(@ticket) %>

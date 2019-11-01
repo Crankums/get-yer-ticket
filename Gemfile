@@ -12,7 +12,7 @@ gem 'omniauth-github'
 gem 'omniauth-google-oauth2'
 gem 'omniauth-rails_csrf_protection', '~> 0.1'
 gem 'dotenv-rails', groups: [:development, :test]
-
+gem 'sysrandom'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 6.0.0'
 # Use sqlite3 as the database for Active Record
