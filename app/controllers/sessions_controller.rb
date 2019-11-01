@@ -53,6 +53,16 @@ class SessionsController < ApplicationController
         end
     end
 
+    def facebookAuth
+        @user = User.find_or_create_by(uid: auth['uid']) do |u|
+            u.name = auth['info']['name']
+            u.email = auth['info']['email']
+            u.image = auth['info']['image']
+        end
+            session[:user_id] = @user.id
+            render 'welcome/home'
+    end
+
     def destroy
         session.clear
         flash[:notice] = "Successfully logged out"
@@ -63,5 +73,9 @@ class SessionsController < ApplicationController
     
     def user_params
         params.require(:user).permit(:name, :uid, :image, :email)
+    end
+
+    def auth
+        request.env['omniauth.auth']
     end
 end

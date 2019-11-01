@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_01_010051) do
+ActiveRecord::Schema.define(version: 2019_11_01_050841) do
 
   create_table "admins", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
@@ -81,6 +81,7 @@ ActiveRecord::Schema.define(version: 2019_11_01_010051) do
     t.string "google_uid"
     t.string "google_refresh_token"
     t.string "google_token"
+    t.string "uid"
   end
 
 end

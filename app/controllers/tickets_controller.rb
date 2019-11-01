@@ -13,7 +13,6 @@ class TicketsController < ApplicationController
 
 
     def new
-        binding.pry
         if params[:customer_id]
             @customer = Customer.find_by(params[:id])
         end
@@ -27,6 +26,7 @@ class TicketsController < ApplicationController
     end
 
     def create
+        binding.pry
         @user = current_user   
         if @customer = Customer.find_by(id: params[:customer_id])
             @ticket = @user.tickets.build(ticket_params.except(:bikes, :customers))
@@ -60,7 +60,6 @@ class TicketsController < ApplicationController
         @ticket = Ticket.find(params[:id])
         @customer = @ticket.customer
         if @ticket.update(ticket_params.except(:customers, :bikes))
-
             redirect_to ticket_path(@ticket)
         else
             flash[:error] = @ticket.errors.full_messages
@@ -94,7 +93,6 @@ class TicketsController < ApplicationController
     private
 
     def ticket_params
-        binding.pry
         params.require(:ticket).permit(
             :check_in,
             :work_start,

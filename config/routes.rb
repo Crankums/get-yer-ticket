@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   
   get '/auth/github/callback', to: 'sessions#githubAuth'
   get 'auth/:provider/callback', to: 'sessions#googleAuth'
+  get '/auth/facebook/callback' => 'sessions#facebookAuth'
   get 'auth/failure', to: redirect('/')
   
   get '/login' => 'sessions#new'

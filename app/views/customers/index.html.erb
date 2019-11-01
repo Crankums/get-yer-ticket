@@ -1,6 +1,7 @@
-<% if @customers.count > 1 %>
-    <%= @customers.each do |c| %>
-        <%= link_to "#{customer.name} : #{customer.phone_number}", customer_path(customer)%>
-<% else %>
-    <%= link_to "#{@customers.name} : #{@customers.phone_number}", customer_path(@customers)%>
+<% if @customers %>
+       <%= link_to "#{@customers.name} : #{@customers.phone_number}", customer_path(@customers)%>
+    <% else %>
+        <% @customers.each do |c| %>
+            <%= link_to "#{customer.name} : #{customer.phone_number}", customer_path(customer)%>
+        <% end %>
 <% end %>
