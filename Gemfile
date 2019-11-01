@@ -6,7 +6,7 @@ ruby '2.6.1'
 gem 'pry'
 
 gem 'simple_calendar', '~> 2.0'
-
+gem 'pundit'
 gem 'omniauth'
 gem 'omniauth-github'
 gem 'omniauth-google-oauth2'
