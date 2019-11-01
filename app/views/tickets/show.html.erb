@@ -29,8 +29,11 @@
 <%= @ticket.customer.name %> <br>
 <%= label_tag :phone_number %>: 
 <%= @ticket.customer.phone_number %> <br>
-<% if @user.admin %>
+<% if current_user.admin %>
     <%= button_to "Delete Ticket", method: 'delete'%>
 <% end %>
-
+<%= form_with(model: @ticket, method: :patch) do |f|%>
+    <%= f.hidden_field @ticket.started(@ticket) %>
+    <%= f.submit "Start Work"%>
+    <% end %>
 <%= link_to "Edit Ticket", edit_ticket_path(@ticket) %>

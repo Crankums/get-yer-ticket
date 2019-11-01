@@ -1,12 +1,15 @@
-<%= @tickets.each do |ticket| %>
+<h2>All Incomplete Tickets</h2>
+
+<% @tickets.each do |ticket| %>
 <ul>
     <% if ticket.status != "Complete" %>
         <li>
         <%= ticket.id %>
-        <%= ticket.customer.name %>
-        <%= ticket.bike.model %>
-        <%= ticket.bike.color %>
+        <%= ticket.customer ? ticket.customer.name : " No name " %> 
+        <%= ticket.bike ? "#{ticket.bike.make} - #{ticket.bike.color}": " No Bike " %>
         <%= link_to "View ticket", ticket_path(ticket) %>
+        <%= ticket.due ? ticket.due.to_date : "No Date"%>
+        <%= ticket.status %>
         </li>
     <% end %>
 </ul>

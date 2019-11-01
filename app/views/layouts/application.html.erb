@@ -10,6 +10,11 @@
   </head>
 
   <body>
+  <% if logged_in? %>
+  <%= button_to "Today", today_path, method: :get%>
+  <%= button_to "Week View", calendars_week_path, method: :get %>
+  <%= button_to "Month View", calendars_month_path, method: :get %>
+<% end %>
   <% flash.each do |k, v| %>
             <div><%= v %></div>
         <% end %>
@@ -17,8 +22,6 @@
     <br>
       <% if session[:user_id] %>
           <%= button_to "Log Out", logout_path, method: :get %>
-          <%= button_to "Week View", calendars_week_path, method: :get %>
-          <%= button_to "Month View", calendars_month_path, method: :get %>
         <% else %>
           <%= button_to "Log In", login_path, method: :get %>
       <% end %>

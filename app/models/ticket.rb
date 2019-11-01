@@ -10,6 +10,8 @@ class Ticket < ApplicationRecord
     validates :due, presence: true
     validates :check_in, presence: true
           
+    scope :past_due, -> {where(:due < DateTime.now)}
+    
     # build a limit that limits the number per day <- scope method
     def checked_in(ticket)
         ticket.check_in= DateTime.now

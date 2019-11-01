@@ -18,6 +18,6 @@
     <%= f.number_field :parts_cost %>
     <%= f.label :paid? %>
     <%= f.check_box :paid? %>
-    <%= f.hidden_field(@customer.id = :customer_id) %>
+    <%= f.hidden_field :customer_id => @customer.id %>
     <%= f.submit %>
 <% end %>
