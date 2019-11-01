@@ -4,9 +4,9 @@ Rails.application.routes.draw do
   get '/calendars/week', to: "calendars#week"
   get '/calendars/month', to: "calendars#month" 
   
-  get 'auth/github/callback', to: 'sessions#githubAuth'
-  get 'auth/google_oauth2/callback', to: 'sessions#googleAuth'
-
+  get '/auth/github/callback', to: 'sessions#githubAuth'
+  get 'auth/:provider/callback', to: 'sessions#googleAuth'
+  get 'auth/failure', to: redirect('/')
   
   get '/login' => 'sessions#new'
   post '/login' => 'sessions#create'
