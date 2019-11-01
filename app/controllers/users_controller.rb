@@ -6,11 +6,12 @@ class UsersController < ApplicationController
     end
 
     def new
+        # binding.pry
         @user = User.new
     end
 
     def create
-        @user = User.build(user_params)
+        @user = User.create(user_params)
         if @user.save
             log_in(@user)
             flash[:success] = "Welcome #{@user.name}"

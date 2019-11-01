@@ -7,7 +7,8 @@ class Ticket < ApplicationRecord
 
     validates :parts, format: {:with => /\A[A-Za-z0-9 ]+\z/ }
     validates :labor, format: {:with => /\A[A-Za-z0-9 ]+\z/ }
-    validates_presence_of :due
+    validates :due, presence: true
+    validates :check_in, presence: true
           
     # build a limit that limits the number per day <- scope method
     def checked_in(ticket)
@@ -24,10 +25,5 @@ class Ticket < ApplicationRecord
 
     def complete_ticket(ticket)
         ticket.status = "Complete"
-    end
-
-    # special order functionality? shared with `class Ticket`
-        # if `special_order?` checked, approval request is sent to Admin for approval
-        #  if approved? s/o status is set to "Approved" => "Ordered" => "Arrived" => "Installed"
-    
+    end    
 end
