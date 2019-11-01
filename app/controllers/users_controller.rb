@@ -6,7 +6,6 @@ class UsersController < ApplicationController
     end
 
     def new
-        # binding.pry
         @user = User.new
     end
 
@@ -34,6 +33,17 @@ class UsersController < ApplicationController
             render :edit
         end
     end
+
+    def destroy
+        @user = User.find_by(id: params[:id])
+        authorize @user
+        if @user.destroy
+            flash[:notice]= "#{user.name} has been deleted."
+            redirect_to users_path
+        else
+            flash[:error]= "There was a problem deleting this user"
+            render :show
+        end
 
     private
 
