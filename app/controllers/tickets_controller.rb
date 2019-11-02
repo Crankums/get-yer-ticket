@@ -10,8 +10,6 @@ class TicketsController < ApplicationController
         @ticket = Ticket.find(params[:id])
     end
 
-
-
     def new
         if params[:customer_id]
             @customer = Customer.find_by(params[:customer_id])

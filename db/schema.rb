@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_01_050841) do
+ActiveRecord::Schema.define(version: 2019_11_01_194619) do
 
   create_table "admins", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
@@ -59,9 +59,9 @@ ActiveRecord::Schema.define(version: 2019_11_01_050841) do
     t.datetime "due"
     t.string "status", default: "Open"
     t.string "labor"
-    t.decimal "labor_cost"
+    t.integer "labor_cost"
     t.string "parts"
-    t.decimal "parts_cost"
+    t.integer "parts_cost"
     t.integer "total_cost"
     t.boolean "paid?"
     t.datetime "created_at", precision: 6, null: false

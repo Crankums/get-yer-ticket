@@ -12,20 +12,24 @@ class Ticket < ApplicationRecord
           
     scope :past_due, -> {where(:due < DateTime.now)}
     
+    def total_cost
+        self.parts_cost + self.labor_cost
+    end
+
     # build a limit that limits the number per day <- scope method
-    def checked_in(ticket)
-        ticket.check_in= DateTime.now
+    def checked_in
+        self.check_in= DateTime.now
     end
     
-    def started(ticket)
-        ticket.work_start= DateTime.now
+    def started
+        self.work_start= DateTime.now
     end
 
-    def paused(ticket)
-        ticket.status= "Paused/Awaiting Approval"
+    def paused
+        self.status= "Paused/Awaiting Approval"
     end
 
-    def complete_ticket(ticket)
-        ticket.status = "Complete"
+    def complete_ticket
+        self.status = "Complete"
     end    
 end
