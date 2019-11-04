@@ -8,10 +8,11 @@ class Customer < ApplicationRecord
     validates :email, format: { with: /@/, message: "A valid email is required" }
     validates :phone_number, presence: true
 
-    scope :duplicates
-         -> 
-         {dup_custies = Customer.group(:name).having("count(*) > 1").pluck(:name)
-         current_scope.where(name: dup_custies)               }
+    scope :duplicates,
+         -> {
+        dup_custies = Customer.group(:name).having("count(*) > 1").pluck(:name)
+        current_scope.where(name: dup_custies)
+        }
     
     def self.search(search)
         customer = Customer.where("name LIKE ?", "%#{search}%")

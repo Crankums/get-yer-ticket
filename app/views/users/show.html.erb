@@ -14,8 +14,8 @@
 </ul>
 <% end %>
 <br>
-<% if policy(current_user).destroy? %>
-    <%= button_to "Delete", action: :destroy %>
+<% if current_user.admin %>
+    <%= button_to "Delete User", action: :destroy %>
 <% end %>
 <br>
 <%= link_to "All tickets", tickets_path %>

@@ -10,7 +10,7 @@ class Ticket < ApplicationRecord
     validates :due, presence: true
     validates :check_in, presence: true
           
-    scope :past_due, -> {where(:due < DateTime.now)}
+    # scope :past_due, -> {where(:due < DateTime.now)}
     
     def total_cost
         self.parts_cost + self.labor_cost

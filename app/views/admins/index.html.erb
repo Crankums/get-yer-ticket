@@ -2,4 +2,8 @@
 
     <%= link_to "#{user.name}", user_path(user) %>
     <%= button_to "Delete account", {:controller => 'users', :action => 'destroy', :id => user.id}, :method => 'delete' %>
+    <br>
 <% end %>
+<br>
+<%= link_to "New User", new_user_path %>
+<br>
