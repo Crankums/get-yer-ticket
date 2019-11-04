@@ -1,24 +1,7 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Welcome to Get Yer Ticket, an app I created using Ruby on Rails for bike shop employees to create work orders for repairs. To get started, you can create a new account or just log in using the name "Boss" and the default password "tesTing123". Upon logging in, you will be directed to week view, which will show you the name and ticket number of any tickets currently in the docket and what day they are due. The names are linked and will show you that current ticket. If you wish to make any updates to the ticket, just go ahead and click the "Edit Ticket" link and make your changes, then click the save button. 
+If you wish to find a previously existing customer, use the "Search" bar at the top of the new ticket view and pick from the existing customer links. Click to go to the customer's profile, then click the "New Ticket" link below to go to the new ticket window, where the customer's name and info will be passed through.
+If you want to see the calendar views, the buttons at the bottom of every page will be available for users to see the day, week, and month calendar views.
+We're constantly making updates and improvements to this app, so be sure to check back as it continues to develop. 
+Good wrenching!

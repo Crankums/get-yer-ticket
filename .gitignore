@@ -34,4 +34,4 @@
 yarn-debug.log*
 .yarn-integrity
 
-gyticket.env
+.env

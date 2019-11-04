@@ -2,7 +2,7 @@
 <% if !@customer %>
 <%= form_tag(customers_path, method: :get) do %>
     <%= text_field_tag(:search, params[:search])%>
-    <%= submit_tag "Search for Custie"%>
+    <%= submit_tag "Search for Custie", name: nil%>
     <% end %>
 <br>
     <%= render "form_cust", ticket: @ticket %>

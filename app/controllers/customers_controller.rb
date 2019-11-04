@@ -2,7 +2,15 @@ class CustomersController < ApplicationController
     before_action :authenticate
 
     def index
+       if params[:search]
         @customers = Customer.search(params[:search])
+            if @customers.empty?
+                flash[:error] = "Couldn't find that customer, here's the rest of 'em"
+                @customers = Customer.all
+            end
+        else
+        @customers = Customer.all
+        end
     end
 
     def show
@@ -55,7 +63,8 @@ class CustomersController < ApplicationController
             :email,
             :phone_number,
             :bikes,
-            :tickets
+            :tickets,
+            :search
         )
     end
 end

@@ -7,7 +7,9 @@ class User < ApplicationRecord
     validates :password, length: {minimum: 6 }
     validates :password_confirmation, length: {minimum: 6 }
     validates :email, format: { with: /@/, message: "A valid email is required" }
-
+    validates :google_uid, presence: true, allow: nil
+    validates :google_refresh_token, presence: true, allow: nil
+    
     
     def self.from_google(auth)
         refresh_token = auth.credentials.refresh_token

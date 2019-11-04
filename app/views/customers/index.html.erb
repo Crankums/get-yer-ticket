@@ -1,7 +1,7 @@
-<% if @customers %>
-       <%= link_to "#{@customers.name} : #{@customers.phone_number}", customer_path(@customers)%>
-    <% else %>
-        <% @customers.each do |c| %>
-            <%= link_to "#{customer.name} : #{customer.phone_number}", customer_path(customer)%>
-        <% end %>
+<% @customers.each do |c|%>
+    <ul>
+    <%= c.name %>
+    <%= c.phone_number %>
+    <%= link_to "Profile", customer_path(c)%>
+    </ul>
 <% end %>
