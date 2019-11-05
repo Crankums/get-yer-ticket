@@ -10,6 +10,7 @@ class Ticket < ApplicationRecord
     validates :due, presence: true
     validates :check_in, presence: true
           
+    scope :big_tickets, -> {where("id > '5'")}
     # scope :past_due, -> {where(:due < DateTime.now)}
     
     def total_cost

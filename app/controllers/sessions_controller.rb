@@ -26,42 +26,41 @@ class SessionsController < ApplicationController
             flash[:success] = "Welcome #{@user.name}!"
             redirect_to '/calendars/week'
         else
-            flash[:danger] = "Login credentials invalid, please retry"
+            flash[:error] = @user.errors.full_messages
             redirect_to login_path
         end
-
     end
 
-    def githubAuth
-        if auth_hash = request.env['omniauth.auth']
-            oauth_email = request.env["omniauth.auth"]["email"]
-            if  user = User.find_by(:email => oauth_email)
-                session[:user_id]= user.id
-            else
-                user = User.create(:email => oauth_email)
-                session[:user_id] = user.id
-                redirect_to '/calendars/week'
-            end
-        else
-            user = User.find_by(:email => params[:email])
-            if user && user.authenticate(params[:uid])
-                session[:user_id]= user.id
-                redirect_to '/calendars/week'
-            else
-                render 'sessions/new'
-            end
-        end
-    end
+    # def githubAuth
+    #     if auth_hash = request.env['omniauth.auth']
+    #         oauth_email = request.env["omniauth.auth"]["email"]
+    #         if  user = User.find_by(:email => oauth_email)
+    #             session[:user_id]= user.id
+    #         else
+    #             user = User.create(:email => oauth_email)
+    #             session[:user_id] = user.id
+    #             redirect_to '/calendars/week'
+    #         end
+    #     else
+    #         user = User.find_by(:email => params[:email])
+    #         if user && user.authenticate(params[:uid])
+    #             session[:user_id]= user.id
+    #             redirect_to '/calendars/week'
+    #         else
+    #             render 'sessions/new'
+    #         end
+    #     end
+    # end
 
-    def facebookAuth
-        @user = User.find_or_create_by(uid: auth['uid']) do |u|
-            u.name = auth['info']['name']
-            u.email = auth['info']['email']
-            u.image = auth['info']['image']
-        end
-            session[:user_id] = @user.id
-            render 'welcome/home'
-    end
+    # def facebookAuth
+    #     @user = User.find_or_create_by(uid: auth['uid']) do |u|
+    #         u.name = auth['info']['name']
+    #         u.email = auth['info']['email']
+    #         u.image = auth['info']['image']
+    #     end
+    #         session[:user_id] = @user.id
+    #         render 'welcome/home'
+    # end
 
     def destroy
         session.clear
@@ -72,7 +71,7 @@ class SessionsController < ApplicationController
     private 
     
     def user_params
-        params.require(:user).permit(:name, :uid, :image, :email)
+        params.require(:user).permit(:name, :google_token, :google_refresh_token, :google_uid, :uid, :image, :email)
     end
 
     def auth

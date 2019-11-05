@@ -10,7 +10,7 @@
   </head>
 
   <body>
-  <% if current_user.admin %>
+  <% if current_user && current_user.admin %>
     <%= button_to "Admin View", admins_index_path, method: :get %>
   <% end %>
   <% if logged_in? %>

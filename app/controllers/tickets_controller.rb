@@ -38,6 +38,7 @@ class TicketsController < ApplicationController
             @ticket.user = @user
             @ticket.bike = Bike.new(ticket_params[:bikes])
             @customer.bikes << @ticket.bike
+            # .build_bike association ^^^
         end
         if @ticket.save
             redirect_to ticket_path(@ticket)
