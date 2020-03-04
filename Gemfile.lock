@@ -143,7 +143,7 @@ GEM
       coderay (~> 1.1.0)
       method_source (~> 0.9.0)
     public_suffix (4.0.3)
-    puma (3.12.2)
+    puma (3.12.4)
     pundit (2.1.0)
       activesupport (>= 3.0.0)
     rack (2.2.2)
@@ -258,7 +258,7 @@ DEPENDENCIES
   omniauth-google-oauth2
   omniauth-rails_csrf_protection (~> 0.1)
   pry
-  puma (~> 3.11)
+  puma (~> 3.12)
   pundit
   rails (~> 6.0.0)
   sass-rails (~> 5)
